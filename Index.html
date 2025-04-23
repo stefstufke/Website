@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stef Schuren</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 220px;
+      background: #1f1f1f;
+      height: 100vh;
+      padding: 2rem 1rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    nav h2 {
+      color: #00bcd4;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 4rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #bbb;
+      margin-bottom: 2rem;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #00bcd4;
+      color: #000;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    a.button:hover {
+      background: #0097a7;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h2>Menu</h2>
+    <a href="#">Home</a>
+    <a href="#">Over mij</a>
+    <a href="#">Projecten</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <h1>Welkom op stefschuren.nl</h1>
+    <p>Deze website is in ontwikkeling. Binnenkort vind je hier meer informatie over mijn werk, projecten en contactgegevens. Tot die tijd kun je me bereiken via onderstaande knop.</p>
+    <a class="button" href="mailto:stefschuren@gmail.com">Stuur een mailtje</a>
+    <footer>&copy; 2025 Stef Schuren. Alle rechten voorbehouden.</footer>
+  </main>
+</body>
+</html>
