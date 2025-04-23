@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stef Schuren</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #121212;
+      background: #0d0d0d;
       color: #f0f0f0;
       display: flex;
       min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtiele zwevende vormen */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #00bcd4 10%, transparent 70%);
+      animation: float 15s infinite linear;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(100px, 100px); }
+      100% { transform: translate(0, 0); }
     }
 
     nav {
-      width: 220px;
+      width: 250px;
       background: #1f1f1f;
       height: 100vh;
       padding: 2rem 1rem;
@@ -30,20 +52,34 @@
       top: 0;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 10;
     }
 
-    nav h2 {
-      color: #00bcd4;
+    .profile {
+      text-align: center;
       margin-bottom: 2rem;
-      font-size: 1.5rem;
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #00bcd4;
+    }
+
+    .profile h2 {
+      margin-top: 0.5rem;
+      color: #00bcd4;
+      font-size: 1.3rem;
     }
 
     nav a {
       color: #ccc;
       text-decoration: none;
       font-size: 1.1rem;
+      padding: 0.5rem 0;
       transition: color 0.3s;
     }
 
@@ -52,32 +88,58 @@
     }
 
     main {
-      margin-left: 220px;
+      margin-left: 250px;
       padding: 4rem 2rem;
       flex: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      animation: fadeIn 1s ease-out;
+      gap: 4rem;
+      z-index: 1;
     }
 
-    h1 {
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1.glitch {
       font-size: 3rem;
+      text-align: center;
+      position: relative;
+      color: white;
+      animation: glitch 1.5s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00f, -2px -2px #f0f; }
+      25% { text-shadow: -2px 2px #0ff, 2px -2px #f0f; }
+      50% { text-shadow: 2px -2px #ff0, -2px 2px #0ff; }
+      75% { text-shadow: -2px -2px #0f0, 2px 2px #f0f; }
+      100% { text-shadow: 2px 2px #00f, -2px -2px #f0f; }
+    }
+
+    .paper {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: -5px 5px 0 #00bcd4;
+      transform: rotate(-1deg);
+      border-left: 3px dashed #00bcd4;
+    }
+
+    h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #00bcd4;
     }
 
     p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      color: #bbb;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.6;
     }
 
-    a.button {
+    .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
       background: #00bcd4;
@@ -85,23 +147,20 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      margin-top: 1rem;
       transition: background 0.3s, transform 0.2s;
     }
 
-    a.button:hover {
+    .button:hover {
       background: #0097a7;
       transform: scale(1.05);
     }
 
     footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
       color: #777;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
@@ -117,19 +176,38 @@
   </style>
 </head>
 <body>
+
   <nav>
-    <h2>Menu</h2>
-    <a href="#">Home</a>
-    <a href="#">Over mij</a>
-    <a href="#">Projecten</a>
-    <a href="#">Contact</a>
+    <div class="profile">
+      <img src="https://via.placeholder.com/80" alt="Profiel">
+      <h2>Stef</h2>
+    </div>
+    <a href="#home">Home</a>
+    <a href="#about">Over mij</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <main>
-    <h1>Welkom op stefschuren.nl</h1>
-    <p>Deze website is in ontwikkeling. Binnenkort vind je hier meer informatie over mijn werk, projecten en contactgegevens. Tot die tijd kun je me bereiken via onderstaande knop.</p>
-    <a class="button" href="mailto:stefschuren@gmail.com">Stuur een mailtje</a>
-    <footer>&copy; 2025 Stef Schuren. Alle rechten voorbehouden.</footer>
+    <section id="home">
+      <h1 class="glitch">Welkom op stefschuren.nl</h1>
+      <p style="text-align:center; max-width: 600px; margin: 1rem auto;">
+        Deze plek is mijn digitale visitekaartje. Hier laat ik mijn projecten, interesses en contactinfo zien, met een eigen stijl.
+      </p>
+    </section>
+
+    <section id="about" class="paper">
+      <h2>Over mij</h2>
+      <p>Ik ben Stef Schuren, een creatieveling met een passie voor technologie, design en het bouwen van toffe dingen. Deze website is meer dan een CV — het is een verlengstuk van wie ik ben.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Wil je samenwerken of heb je een leuke uitdaging voor me? Laat gerust wat van je horen!</p>
+      <a class="button" href="mailto:stefschuren@gmail.com">Stuur een mailtje</a>
+    </section>
+
+    <footer>&copy; 2025 Stef Schuren. Met zorg gebouwd en een vleugje chaos.</footer>
   </main>
+
 </body>
 </html>
